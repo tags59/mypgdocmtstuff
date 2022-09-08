@@ -1,0 +1,17 @@
+---
+- name: launching complete apache website with Jinja2
+  hosts: all
+  become: true
+  tasks: 
+      - name: installing apache software
+        apt:
+                name: apache2
+                state: present
+      - name: copy index.html
+        template:
+                src: index.html
+                dest: /var/www/html/index.html
+      - name: start the apache2 service
+        service:
+                name: apache2
+                state: restarted

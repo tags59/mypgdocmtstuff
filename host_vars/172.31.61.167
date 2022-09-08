@@ -1,0 +1,8 @@
+myuser: 
+  - usera
+  - userb
+  - userc
+
+mypack:
+  - apache2
+  - telnet

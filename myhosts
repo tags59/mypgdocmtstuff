@@ -1,0 +1,14 @@
+[dev]
+localhost
+
+[prod]
+172.31.61.167
+172.31.50.29
+
+# [aws]
+# 54.158.229.231 ansible_ssh_user=ubuntu
+# 54.167.39.102 ansible_ssh_user=ubuntu
+
+# [centos]
+# 3.92.226.57 ansible_ssh_user=ec2-user
+

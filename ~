@@ -1,0 +1,15 @@
+---
+- name: Gathering facts
+  hosts: all
+  tasks:
+
+          - name: creating an empty file called hostdetails.txt
+            file:
+                    path: "/home/labsuser/simpli/hereshoping.txt"
+                    state: touch
+            become: yes
+
+            #- name: print the facts ansible_all_ipv4_addresses
+            #  debug:
+            #        msg: "{{ ansible_all_ipv4_addresses }}"
+

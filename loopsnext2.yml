@@ -1,0 +1,17 @@
+---
+- name: loops class practice with hashes
+  hosts: all
+  become: true
+  tasks:
+          - name: adding several users
+            user:
+                    name: "{{ item.name }}"
+                    state: present
+                    groups: "{{ item.groups }}"
+            loop:
+                    - { name: 'testuser1' , groups: 'simplilearnlinux' }
+                    - { name: 'testuser2' , groups: 'ansiblelinux' }
+                    - { name: 'testuser3' , groups: 'cmtlinux' }
+
+          
+

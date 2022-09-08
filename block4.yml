@@ -1,0 +1,23 @@
+---
+- name: testing block and rescue
+  hosts: localhost
+  tasks:
+    - name: Attempt and graceful roll back demo
+      block:
+        - name: Print a message
+          ansible.builtin.debug:
+            msg: 'I execute normally'
+          changed_when: yes
+          notify: run me even after an error
+        - name: Force a failure
+          ansible.builtin.command: /bin/false
+      rescue:
+        - name: Make sure all handlers run
+          meta: flush_handlers
+  handlers:
+    - name: run me even after an error
+      ansible.builtin.debug:
+        msg: 'This handler runs even on error'
+
+
+

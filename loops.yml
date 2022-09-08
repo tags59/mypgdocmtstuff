@@ -1,0 +1,17 @@
+---
+- name: loops class practice
+  hosts: all
+  become: true
+  vars:
+          mystate: absent
+  tasks:
+          - name: adding user
+            user:
+                    name: "{{ item }}"
+                    state: "{{ mystate }}"
+            loop:
+                    - user1
+                    - user2
+                    - user3
+          
+

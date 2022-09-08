@@ -1,0 +1,10 @@
+---
+- name: basic variable playbook
+  hosts: all
+  vars: 
+    salutation: Hello guys!
+  tasks:
+          - name: Ansible variable basic usage
+            debug:
+                    msg: "{{ salutation }}"
+

@@ -1,0 +1,16 @@
+---
+- name: Retrying a task until a condition is meet
+  hosts: dev
+  become: true
+  tasks:
+          - name: testing when condition
+            debug:
+                    msg: "Hello from Simplilearn TAGS"
+            when:
+                    ansible_facts['os_family'] == "Centos"
+
+          - name: next condition
+            debug:
+                    msg: "Goodbye from Simplilearn TAGS"
+            when:
+                    ansible_facts['os_family'] == "Debian"

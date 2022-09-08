@@ -1,0 +1,7 @@
+---
+mystate1: present
+mystate2: restarted
+myuser: user555
+mypackage: apache2
+myservice: apache2
+mysrc: practical.txt

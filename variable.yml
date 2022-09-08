@@ -1,0 +1,19 @@
+---
+- name: testing playscope variable
+  hosts: all
+  become: true
+  vars:
+          mystate: absent
+          myuser: usertest
+          mypackage: telnet
+  tasks:
+          - name: adding user
+            user:
+                    name: "{{ myuser }}"
+                    state: "{{ mystate }}"
+                    password: "{{'redhat' | password_hash('sha512')}}"
+          - name: installing package
+            apt:
+                    name: "{{ mypackage }}"
+                    state: "{{ mystate }}"
+

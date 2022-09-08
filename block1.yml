@@ -1,0 +1,15 @@
+---
+- name: testing our first playbook
+  hosts: all
+  tasks:
+  - name: Print a message
+    ansible.builtin.debug:
+      msg: 'I execute normally'
+  - name: Force a failure
+    ansible.builtin.command: /bin/false
+  - name: Never print this
+    ansible.builtin.debug:
+      msg: 'I never execute, due to the above task failing, :-('
+
+
+

@@ -1,0 +1,20 @@
+---
+- name: testing our third playbook
+  hosts: all
+  become: true
+  tasks: 
+      - name: adding groups
+        group:
+                name: learners
+                state: present
+ 
+      - name: adding user
+        user:
+                name: learner1
+                state: present
+                groups: learners
+      - name: adding next user
+        user: 
+                name: learner2
+                state: present
+                groups: learners

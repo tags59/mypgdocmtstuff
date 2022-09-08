@@ -1,0 +1,25 @@
+---
+- name: launching complete apache website
+  hosts: all
+  become: true
+  tasks: 
+      - name: installing apache software
+        user:
+                name: apache2
+                state: present
+      - name: copy index.html
+        copy:
+                src: index.html
+                dest: /var/www/html/index.html
+        notify:
+                - start the apache2 service
+                - install telnet
+  handlers:
+      - name: start the apache2 service
+        service:
+                name: apache2
+                state: restarted
+      - name: install telnet
+        apt:
+                name: telnet
+                state: present

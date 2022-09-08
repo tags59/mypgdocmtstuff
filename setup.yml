@@ -1,0 +1,19 @@
+---
+- name: Gathering facts
+  hosts: all
+  tasks:
+          - name: print the facts ansible_hostname
+            debug:
+                    msg: "{{ ansible_hostname }}"
+
+          - name: print the facts' ansible_os_family'
+            debug:
+                    msg: "{{ ansible_os_family }}"
+
+          - name: print the facts
+            debug:
+                    msg: "{{ ansible_env.SSH_CONNECTION }}"
+
+          - name: print the facts ansible_memtotal_mb
+            debug:
+                    msg: "{{ ansible_memtotal_mb }}"

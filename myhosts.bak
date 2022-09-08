@@ -1,0 +1,5 @@
+[dev]
+localhost myuser=user99 mypackage=apache2
+[prod]
+172.31.61.167 myuser=user88 mypackage=telnet
+172.31.50.29 myuser=user77 mypackage=telnet

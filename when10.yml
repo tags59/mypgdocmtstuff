@@ -1,0 +1,21 @@
+- name: testing playbook with "when" again
+  hosts: all
+  become: true
+  tasks:
+          - name: getting the os-release
+            shell: cat /etc/os-release
+            register: mymessage
+            #          - name: printing
+            #            debug: 
+            #              msg: "{{ mymessage.stdout }}"
+          - name: remove telnet
+            apt: 
+              name: telnet
+              state: absent
+            when: mymessage.stdout.find('launchpad')!=-1
+          - name: install telnet
+            apt:
+              name: telnet
+              state: latest
+            when: mymessage.stdout.find('launchpad') !=1
+

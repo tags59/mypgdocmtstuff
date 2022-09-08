@@ -1,0 +1,23 @@
+---
+- name: testing variables in playbook
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+          myuser: usertest
+          mypackage: telnet
+  tasks:
+          - name: adding groups
+            group:
+                    name: testgroup
+                    state: "{{ mystate }}"
+          - name: adding user
+            user:
+                    name: "{{ myuser }}"
+                    state: "{{ mystate }}" 
+                    password: "{{'bluehat' | password_hash('sha512')}}"
+                    groups: testgroup
+          - name: installing package
+            apt:
+                    name: "{{ mypackage }}"
+                    state: "{{ mystate }}"

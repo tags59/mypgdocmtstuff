@@ -1,0 +1,11 @@
+---
+- name: testing 
+  hosts: dev
+  become: true
+  tasks:
+          - name: getting the motd
+            shell: cat /etc/motd
+            register: mymessage
+          - name: printing motd
+            debug:
+                    msg: "{{ mymessage.stdout }}"

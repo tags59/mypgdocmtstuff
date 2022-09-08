@@ -1,0 +1,19 @@
+---
+- name: install apache2 on hosts who have total memory GT 7000MB and remove apache2 from the hosts who have zLT 7000MB
+  hosts: all
+  become: true
+  tasks:
+          - name: Testing "when" conditions
+            apt:
+                    name: apache2
+                    state: present
+            when:
+                    ansible_memtotal_mb|int > 7000
+                                        
+          - name: Second "when" condition
+            apt:
+                    name: apach2
+                    state: absent
+            when:
+                    ansible_memtotal_mb|int <= 7000
+                    

@@ -1,0 +1,16 @@
+---
+- name: third loops class task
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+  tasks: 
+      - name: installing packages
+        apt:
+                name: "{{ item }}"
+                state: "{{ mystate }}"
+        loop:
+                - ssh
+                - telnet
+                - vsftpd
+                  

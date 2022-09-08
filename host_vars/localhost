@@ -1,0 +1,8 @@
+myuser: 
+  - user10
+  - user20
+  - user30
+
+mypack:
+  - ssh
+  - telnet

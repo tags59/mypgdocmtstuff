@@ -1,0 +1,9 @@
+---
+- name: Condntions grouped together using "or" or "and" logical operator
+  hosts: dev
+  become: true
+  tasks:
+          - name: "Testing either CentOS 6 or Debian 7 systems"
+            command: echo "Either  CentOS 6 or Debian 7"
+            when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6") or
+                  (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "7")

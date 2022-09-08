@@ -1,0 +1,18 @@
+---
+- name: Condntions grouped together using "or" or "and" logical operator
+  hosts: dev
+  become: true
+  tasks:
+          - name: Testing "when" conditions
+            apt:
+                    name: apache2
+                    state: present
+            when:
+                    ansible_facts['os_family']=="Debian"
+                    
+          - name: Second "when" condition
+            yum:
+                    name: httpd
+                    state: present
+            when:
+                    ansible_facts['os_family'] == "Centos"

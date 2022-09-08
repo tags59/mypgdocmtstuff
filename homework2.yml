@@ -1,0 +1,13 @@
+---
+- name: Gathering facts
+  hosts: all
+  tasks:
+
+          - name: print the facts ansible_default_ipv4
+            debug:
+                    msg: "{{ ansible_default_ipv4 }}"
+
+          - name: print the facts ansible_all_ipv4_addresses
+            debug:
+                    msg: "{{ ansible_all_ipv4_addresses }}"
+

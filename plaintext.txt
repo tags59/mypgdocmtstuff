@@ -1,0 +1,10 @@
+localhost | SUCCESS => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "172.17.0.1",
+            "172.31.51.19"
+        ],
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false
+}

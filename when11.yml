@@ -1,0 +1,8 @@
+- name: testing "when" in playbook
+  hosts: localhost
+  become: true
+  tasks:
+          - name: testing when condition
+            debug: 
+               msg: "{{ ansible_memory_mb['real'].total }}"
+

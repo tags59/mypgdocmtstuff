@@ -1,0 +1,17 @@
+---
+- name: loops class practice2
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+  tasks:
+          - name: adding groups
+            group:
+                    name: "{{ item }}"
+                    state: "{{ mystate }}"
+            loop:
+                    - simplilearnlinux
+                    - ansiblelinux
+                    - cmtlinux
+          
+

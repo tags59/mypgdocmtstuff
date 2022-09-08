@@ -1,0 +1,20 @@
+---
+- name: testing advance ansible block, rescue and ignore_errors
+  hosts: all
+  tasks:
+  - name: testing block
+    block:
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: 'I execute normally'
+    - name: Force a failure
+      ansible.builtin.command: /bin/false
+      ignore_errors: yes
+    - name: Never print this
+      ansible.builtin.debug:
+       msg: 'I never execute, due to the above task failing, :-('
+    rescue:
+            - name: Print when errors
+              ansible.builtin.debug:
+                msg: 'I caught an error, can do stuff here to fix it, :-)'
+

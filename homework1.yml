@@ -1,0 +1,25 @@
+---
+- name: Homework_1
+  hosts: centos
+  become: true
+  tasks:
+          - name: ensure apache is at the latest version
+            yum:
+                   name: httpd
+                   state: latest
+          - name: enbable mod_rewrite
+            apache2_module: name=rewrite state=present
+            notify:
+                  - restart: apache2
+          - name: ensure apache2 is running
+            service:
+                    name: httpd
+                    state: started
+
+  handlers:
+          - name: restart apache2
+            service:
+                    name: httpd
+                    state: restarted
+
+

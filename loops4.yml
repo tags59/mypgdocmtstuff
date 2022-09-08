@@ -1,0 +1,12 @@
+---
+#creating simplilearn1.... simplilearn10 users 
+- name: testing our first playbook
+  hosts: localhost
+  become: true
+  tasks:
+          - name: add several users
+            user:
+               name: "{{ item }}"
+               state: absent
+            with_sequence: start=1 end=10 stride=1 format=simplilearn%02x
+

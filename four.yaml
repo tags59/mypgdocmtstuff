@@ -1,0 +1,17 @@
+---
+- name: launching complete apache website
+  hosts: all
+  become: true
+  tasks: 
+      - name: installing apache software
+        apt:
+                name: apache2
+                state: present
+      - name: copy index.html
+        copy:
+                src: index.html
+                dest: /var/www/html/index.html
+      - name: start the apache2 service
+        service:
+                name: apache2
+                state: restarted

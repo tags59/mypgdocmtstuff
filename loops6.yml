@@ -1,0 +1,13 @@
+---
+- name: Nested loop exercise to give users access to multiple databases
+  hosts: dev
+  become: true
+  tasks:
+          - name: nested loop example
+            community.mysql.mysql_user:
+              name: "{{ item[0] }}"
+              priv: "{{ item[1] }}.*:ALL"
+              append_privs: yes
+              password: "foo"
+            loop: "{{ ['alice', 'bob'] |product(['clientdb', 'employeedb', 'providerdb'])|list }}"
+

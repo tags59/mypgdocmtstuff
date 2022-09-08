@@ -1,0 +1,21 @@
+---
+- name: Gathering facts
+  hosts: localhost
+  tasks:
+
+          - name: creating an empty file called hostdetails.txt
+            file:
+                    path: "/home/labsuser/simpli/nexttry.txt"
+                    state: touch
+            become: yes
+            
+- hosts: all
+  tasks:
+          - name: copy ips to hostdetails.txt
+            copy:
+                    dest: "/home/labsuser/simpli/nexttry.txt"
+                    content: "{{ ansible_all_ipv4_addresses }}"
+                   
+
+   
+

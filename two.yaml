@@ -1,0 +1,13 @@
+---
+- name: testing our second playbook
+  hosts: all
+  become: true
+  tasks: 
+      - name: adding user
+        user:
+                name: user500
+                state: present
+      - name: installing apache2
+        apt:
+                name: apache2
+                state: present

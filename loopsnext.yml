@@ -1,0 +1,15 @@
+---
+- name: loops class practice with host varialbes
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+  tasks:
+          - name: adding user
+            user:
+                    name: "{{ item }}"
+                    state: "{{ mystate }}"
+            loop:
+                    "{{ myuser }}"
+          
+

@@ -1,0 +1,16 @@
+---
+- name: Add the user 'janed' with a specific uid and a primary group of 'doet'
+  hosts: all
+  become: true
+  tasks:
+    - name: adding group doet
+      group:
+        name: doet
+        state: present
+    - name: adding user Jane Doe to new group
+      user:
+        name: janed
+        state: present
+        uid: 1220
+        groups: doet 
+

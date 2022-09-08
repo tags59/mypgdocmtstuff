@@ -1,0 +1,14 @@
+---
+- name: testing our fuve playbook
+  hosts: all
+  become: true
+  tasks: 
+      - name: adding user
+        user:
+                name: user600
+                state: present
+                password: "{{'redhat' | password_hash('sha512')}}"
+      - name: installing apache2
+        apt:
+                name: apache2
+                state: present

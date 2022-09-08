@@ -1,0 +1,33 @@
+---
+- name: testing group variables
+  hosts: all
+  become: true
+  vars:
+          mystate1: present
+          mystate2: latest
+          mystate3: restarted
+  tasks:
+          - name: adding user
+            user:
+                    name: "{{ myuser1 }}"
+                    state: "{{ mystate1 }}"
+                    password: "{{ 'pinkhat' | password_hash('sha512') }}"
+
+         - name: install software
+           apt: 
+                    name: "{{ myservice }}" 
+                    update_cache: yes 
+                    state: "{{ mystate2 }}"
+
+         - name: enabled mod_rewrite
+           apache2_module:
+                    name: rewrite 
+                    state: "{{ mystate1 }}"
+           notify:
+                    - restart "{{ myservice }}"
+
+  handlers:
+         - name: restart software
+           service: 
+                    name: "{{ myservice }}" 
+                    state: "{{ mystate3 }}"
